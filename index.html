@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        .column {
+          float: left;
+          width: 33.33%;
+          padding: 5px;
+        }
+        
+        /* Clearfix (clear floats) */
+        .row::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+        </style>
+
     <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +43,25 @@
             
         </div>
     </header>
-    <main></main>
+    <main>
+<div class="row">
+<div class="column"><img src="aimg/img1.jpg" alt="fish" ></div>
+<div class="colomn"><img src="aimg/img2.jpg" alt="fish2"></div>
+<div class="colomn"><img src="aimg/img3.jpg" alt="fish3"></div>
+</div>
+<div class="rowdiv">
+    <div class="colomn"><img src="aimg/img4.jpg" alt="fish4"></div>
+    <div class="colomn"><img src="aimg/img5.jpg" alt="fish5"></div>
+    <div class="colomn"><img src="aimg/img6.jpg" alt="fish6"></div>
+    </div>
+
+
+
+    
+
+
+
+    </main>
     <footer ></footer>
 
 </body>
