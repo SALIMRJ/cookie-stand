@@ -1,57 +1,138 @@
-  var Branches ={
-   
-    nameLoc :'',
-    MaxCustomers :0,
-    MinCustomers :0,
-    AvgCookies :0,
-    CookiespHour:[],
-    RandomCustomers :[],
-    gitRandom:function(){
-        console.log('gitRandom');
-        for(var i = 0;i<15;i++){
-            this.RandomCustomers[i]=GetRandom(this.MaxCustomers,this.MinCustomers);
-           
-        };
-        this.gitCookiespHouer()
-    } ,
-    gitCookiespHouer:function(){
-        console.log('gitCookiespHouer');
-       for(var i =0;i<this.RandomCustomers.length;i++){
-           this.CookiespHour[i]=Math.floor(this.AvgCookies*this.RandomCustomers[i]) ;
-       };
-       this.ShowIfo();
-    },
+function Locations (Name,Max,Min,CookAvg, ){
+ this.name =Name;
+ this.maxCustomers=Max;
+ this.minCustomers=Min;
+ this.CookiesAvg=CookAvg;
+ this.customersList=[];
+ this.cookiesList=[];
+
+}
+var  totalHouers =[0];
+for(i=0;i<15;i++){
+    totalHouers[i]=0;
+};
+
+Locations.prototype.getcustomersList =function(){
+
+    for(var i =0 ; i<=14; i++){
+      this.customersList[i]=GetRandom(this.maxCustomers,this.minCustomers);
+    };
+  this.getcookiesList();
+};
+
+Locations.prototype.getcookiesList=function(){
+  for(var i=0; i<this.customersList.length;i++){
+    this.cookiesList[i]=Math.ceil(this.customersList[i]*this.CookiesAvg);
+    
+     }
+     
+     this.locationRender();
+};
 
 
-    ShowIfo:function(){
-        console.log('ShowIfo');
-        var parent =document.getElementById('SaleInfo');
-        var name = document.createElement('p');
-        name.textContent=this.nameLoc; 
-        parent.appendChild(name);
-        var listInfo=document.createElement('ul');
-        parent.appendChild(listInfo);
+var DivShow =document.getElementById('SaleInfo');
+var tableInfo=document.createElement('table');
+function houerRender(){
+ 
+ DivShow.appendChild(tableInfo);
+ var time_TR= document.createElement('tr')
+ tableInfo.appendChild(time_TR);
+ var Fcell= document.createElement('th');
+  Fcell.textContent=' ';
+ time_TR.appendChild(Fcell);
+  var time=6;
+  var am_pm = 'am';
+ for(var i =0 ;i<15;i++){
+     if(time>12){
+      time=1 ;
+      am_pm='pm';
+     };
+   var HouerTh = document.createElement('th');
+   HouerTh.textContent=time+am_pm;
+   time_TR.appendChild(HouerTh);
+   time++;
+  }
+  var HouerTh = document.createElement('th');
+  HouerTh.textContent='Total';
+  time_TR.appendChild(HouerTh);
+  
+};
+
+
+Locations.prototype.locationRender=function(){
+  
+ var Srow =document.createElement('tr');
+ tableInfo.appendChild(Srow);
+ var nameLoc=document.createElement('th');
+ nameLoc.textContent=this.name;
+ Srow.appendChild(nameLoc);
+ var total = 0;
+for(var i =0;i<this.cookiesList.length;i++){
+     var cookiesInfi =document.createElement('td');
+     cookiesInfi.textContent=this.cookiesList[i];
+     Srow.appendChild(cookiesInfi);
+     total+=this.cookiesList[i];
+     totalHouers[i]+=this.cookiesList[i];
+};
+
+var cookiesInfi =document.createElement('th');
+     cookiesInfi.textContent=total;
+     Srow.appendChild(cookiesInfi);
+
+     
+};
+
+Locations.prototype.renderTotalHouer=function(){
+
+    var Srow =document.createElement('tr');
+    tableInfo.appendChild(Srow);
+    var nameLoc=document.createElement('th');
+    nameLoc.textContent='Total';
+    Srow.appendChild(nameLoc);
+    var FTotal=0
+    for(var i =0;i<this.cookiesList.length;i++){
+        var cookiesInfi =document.createElement('th');
+        cookiesInfi.textContent=totalHouers[i];
+        Srow.appendChild(cookiesInfi);
+        FTotal+=totalHouers[i];
         
-        var houer = 6 ;
-        var am_pm='am';
-        var total = 0; 
-        for(var i =0 ;i<this.CookiespHour.length;i++){
-            if(houer>12){
-                am_pm='pm';
-                houer=1; };
-            var liOFlu = document.createElement('li');
-            total+=this.CookiespHour[i];
-            liOFlu.textContent=houer+am_pm+' :'+this.CookiespHour[i]+' '+'cookies';
-            houer++;
-            listInfo.appendChild(liOFlu);
-        }
-        var liOFlu = document.createElement('li');
-        liOFlu.textContent='Total :'+total+' '+ 'cookies';
-        listInfo.appendChild(liOFlu);
+   };
+   var cookiesInfi =document.createElement('th');
+   cookiesInfi.textContent=FTotal;
+   Srow.appendChild(cookiesInfi);
 
-    },
+};
 
-  };
+
+  
+ 
+   
+
+houerRender();
+
+var Seattle	= new Locations("Seattle",65,23,6.3);
+Seattle.getcustomersList();
+
+var Tokyo	= new Locations("Tokyo",3,24,1.2);
+Tokyo.getcustomersList(); 
+
+var Dubai	= new Locations("Dubai",11,38,3.7);
+Dubai.getcustomersList(); 
+
+var Paris	= new Locations("Paris",20,38,2.3);
+Paris.getcustomersList(); 
+
+var Lima	= new Locations("Lima",2,16,4.6);
+Lima.getcustomersList(); 
+Lima.renderTotalHouer();
+
+
+
+
+
+
+
+
 
   function GetRandom (max,min){
     console.log('GetRandom');
@@ -59,35 +140,8 @@
      return Rnumber ;
   };
 
-  Branches.nameLoc='Seattle';
-  Branches.MinCustomers=23;
-  Branches.MaxCustomers=65;
-  Branches.AvgCookies=6.3;
-  Branches.gitRandom();
-  //---------------------
-  Branches.nameLoc='Tokyo';
-  Branches.MinCustomers=3;
-  Branches.MaxCustomers=24;
-  Branches.AvgCookies=1.2;
-  Branches.gitRandom();
-//-----------------------
-Branches.nameLoc='Dubai';
-Branches.MinCustomers=11;
-Branches.MaxCustomers=38;
-Branches.AvgCookies=3.7;
-Branches.gitRandom();
-//-----------------------
-Branches.nameLoc='Paris';
-Branches.MinCustomers=20;
-Branches.MaxCustomers=38;
-Branches.AvgCookies=2.3;
-Branches.gitRandom();
-//-----------------------
-Branches.nameLoc='Lima';
-Branches.MinCustomers=2;
-Branches.MaxCustomers=16;
-Branches.AvgCookies=4.6;
-Branches.gitRandom();   
-//-----------------------
+ 
+  
+
 
  
