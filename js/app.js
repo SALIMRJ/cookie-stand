@@ -10,7 +10,7 @@ function Locations (Name,Max,Min,CookAvg, ){
 
 }
 var  totalHouers =[0];
-for(i=0;i<15;i++){
+for( var i=0;i<15;i++){
     totalHouers[i]=0;
 };
 
