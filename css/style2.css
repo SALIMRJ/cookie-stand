@@ -1,3 +1,11 @@
+body {
+    height: 800px;
+    margin: 0;
+    padding: 0;
+}
+
+
+
 table,th,td{
  
  border: 1px solid black;
@@ -11,3 +19,50 @@ margin-left: 1%;
 
 
 }
+
+
+.items {
+  display: inline-block;
+  text-align: center;
+  margin-left: 2%;
+  height: 250px;
+  width: 300px;
+}
+.rowdiv {
+  margin-top: 100px;
+   position: relative;
+   height: 250px;
+   text-align: center;
+  }
+  .items img{
+    height: 250px;
+    width: 300px;
+  }
+  .second{
+    margin-top: 30px;
+    position: relative;
+    height: 250px;
+    text-align: center;
+   }
+.colomn{
+    margin-left: 2%;
+    display: inline-block;
+}
+.colomn img{
+
+    height: 250px;
+    width: 300px;
+}
+.therd{
+    margin-top: 2%;
+    position: relative;
+    text-align: center;
+}
+.Foot{
+  
+   background-color: #7c9473;
+}
+
+
+  
+  

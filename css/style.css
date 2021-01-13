@@ -48,3 +48,13 @@ font-weight: bold;
 li a:hover {
     background-color:#54694d;
   }
+  .home{
+  font-size: 30px;
+  text-align: right;
+  text-decoration: none;
+  color: black;
+  background-color:#184d47 ;
+  }
+  .home:hover{
+    background-color:#0a302b
+  }
