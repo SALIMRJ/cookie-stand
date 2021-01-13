@@ -1,3 +1,5 @@
+"use strict";
+
 function Locations (Name,Max,Min,CookAvg, ){
  this.name =Name;
  this.maxCustomers=Max;
