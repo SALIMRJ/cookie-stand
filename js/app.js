@@ -1,4 +1,6 @@
-"use strict"
+
+"use strict";
+
 
 function Locations (Name,Max,Min,CookAvg, ){
  this.name =Name;
@@ -10,7 +12,11 @@ function Locations (Name,Max,Min,CookAvg, ){
 
 }
 var  totalHouers =[0];
+
 for(var i=0;i<15;i++){
+
+for( var i=0;i<15;i++){
+
     totalHouers[i]=0;
 };
 
@@ -138,9 +144,14 @@ Lima.renderTotalHouer();
 
   function GetRandom (max,min){
     console.log('GetRandom');
+
   // Math.floor((Math.random()*max)+min);
    var Rnumber =  Math.floor(Math.random() * (max - min + 1) ) + min;
     console.log(Rnumber);
+
+    //var Rnumber = Math.floor(Math.random()*max+1+min);
+     var Rnumber =  Math.floor(Math.random() * (max - min + 1) ) + min;
+
      return Rnumber ;
   };
 
