@@ -1,3 +1,5 @@
+"use strict"
+
 function Locations (Name,Max,Min,CookAvg, ){
  this.name =Name;
  this.maxCustomers=Max;
@@ -8,7 +10,7 @@ function Locations (Name,Max,Min,CookAvg, ){
 
 }
 var  totalHouers =[0];
-for(i=0;i<15;i++){
+for(var i=0;i<15;i++){
     totalHouers[i]=0;
 };
 
@@ -136,7 +138,9 @@ Lima.renderTotalHouer();
 
   function GetRandom (max,min){
     console.log('GetRandom');
-    var Rnumber = Math.floor(Math.random()*max+1+min);
+  // Math.floor((Math.random()*max)+min);
+   var Rnumber =  Math.floor(Math.random() * (max - min + 1) ) + min;
+    console.log(Rnumber);
      return Rnumber ;
   };
 
