@@ -136,7 +136,8 @@ Lima.renderTotalHouer();
 
   function GetRandom (max,min){
     console.log('GetRandom');
-    var Rnumber = Math.floor(Math.random()*max+1+min);
+    //var Rnumber = Math.floor(Math.random()*max+1+min);
+     var Rnumber =  Math.floor(Math.random() * (max - min + 1) ) + min;
      return Rnumber ;
   };
 
