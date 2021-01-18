@@ -1,5 +1,6 @@
 "use strict"
 
+
 function Locations (Name,Max,Min,CookAvg, ){
  this.name =Name;
  this.maxCustomers=Max;
@@ -10,8 +11,8 @@ function Locations (Name,Max,Min,CookAvg, ){
 
 }
 var  totalHouers =[0];
-for(var i=0;i<15;i++){
-    totalHouers[i]=0;
+for(var j=0;j<15;j++){
+    totalHouers[j]=0;
 };
 
 Locations.prototype.getcustomersList =function(){
@@ -83,10 +84,9 @@ var cookiesInfi =document.createElement('th');
 
      
 };
-
+var Srow =document.createElement('tr');
 Locations.prototype.renderTotalHouer=function(){
-
-    var Srow =document.createElement('tr');
+  
     tableInfo.appendChild(Srow);
     var nameLoc=document.createElement('th');
     nameLoc.textContent='Total';
@@ -138,14 +138,51 @@ Lima.renderTotalHouer();
 
   function GetRandom (max,min){
     console.log('GetRandom');
-  // Math.floor((Math.random()*max)+min);
-   var Rnumber =  Math.floor(Math.random() * (max - min + 1) ) + min;
+    var Rnumber =  Math.floor(Math.random() * (max - min + 1) ) + min;
     console.log(Rnumber);
      return Rnumber ;
   };
 
  
-  
+  var newloc=document.getElementById('new-location');
+  newloc.addEventListener('submit',addloc);
+  function addloc(event,salim){
+
+    event.preventDefault();
+    var name= event.target.location.value;
+    console.log(name);
+    var Nmax =parseInt(event.target.max.value) ;
+    console.log(Nmax);
+    var Nmin =parseInt(event.target.min.value );
+console.log(Nmin);
+    var NCavg=parseFloat( event.target.avg.value);
+    console.log(NCavg);
+    var locobj=new Locations(name,Nmax,Nmin,NCavg);
+    console.log('lllllllllll',typeof(Nmax)) ; 
+    console.log(max*2);
+    console.log(min-5) ;
+    console.log(max+min);
+    locobj.getcustomersList();
+    Srow.remove();
+    Srow.textContent='';
+    locobj.renderTotalHouer();
+
+
+    
+    
+  };
+  Locations.prototype.randomNew=function(mmax,mmin){
+    for(var t=0;t<=14;t++){
+      
+     this.customersList[t] = 0 *(mmax - mmin + 1)  + mmin;
+      console.log(this.customersList[t]);
+      
+    } 
+    
+   
+
+
+  };
 
 
 
