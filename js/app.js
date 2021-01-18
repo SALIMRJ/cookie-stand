@@ -1,4 +1,6 @@
-"use strict"
+
+"use strict";
+
 
 
 function Locations (Name,Max,Min,CookAvg, ){
@@ -11,8 +13,10 @@ function Locations (Name,Max,Min,CookAvg, ){
 
 }
 var  totalHouers =[0];
+
 for(var j=0;j<15;j++){
     totalHouers[j]=0;
+
 };
 
 Locations.prototype.getcustomersList =function(){
@@ -138,8 +142,13 @@ Lima.renderTotalHouer();
 
   function GetRandom (max,min){
     console.log('GetRandom');
+
     var Rnumber =  Math.floor(Math.random() * (max - min + 1) ) + min;
-    console.log(Rnumber);
+
+
+    //var Rnumber = Math.floor(Math.random()*max+1+min);
+     var Rnumber =  Math.floor(Math.random() * (max - min + 1) ) + min;
+
      return Rnumber ;
   };
 
